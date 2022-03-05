@@ -1,5 +1,6 @@
 .places__like {
   background-image: url(../../../images/heart_empty.svg);
+  background-repeat: no-repeat;
   width: 22px;
   height: 19px;
   background-position: center;

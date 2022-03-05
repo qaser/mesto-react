@@ -9,19 +9,14 @@ function Main(props) {
     const [cards, setCards] = React.useState([]);
 
     React.useEffect(() => {
-        api.getMyProfile()
-            .then((userData) => {
+        Promise.all([api.getMyProfile(), api.getInitialCards()])
+            .then(([userData, cards]) => {
                 setUserName(userData.name);
                 setUserDescription(userData.about);
                 setUserAvatar(userData.avatar);
+                setCards(cards)
             })
-            .catch(err => `Данные пользователя не получены, ошибка: ${ err }`);
-
-        api.getInitialCards()
-            .then((data) => {
-                setCards(data)
-            })
-            .catch(err => `Данные карточек не получены, ошибка: ${ err }`);
+            .catch(err => `Данные не получены, ошибка: ${ err }`);
     }, []);
 
     return (
@@ -29,7 +24,7 @@ function Main(props) {
             <section className="profile">
                 <div className="profile__user">
                     <button className="profile__button-avatar" type="button" onClick={ props.onEditAvatar }>
-                    <img className="profile__avatar" src="#" alt="Аватар пользователя" style={{ backgroundImage: `url(${userAvatar})` }}/>
+                    <img className="profile__avatar" src={ userAvatar } alt="Аватар пользователя" />
                     </button>
                     <div className="profile__description">
                     <div className="intro">
