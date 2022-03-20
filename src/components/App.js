@@ -1,5 +1,4 @@
 import React from 'react';
-import '../index.css';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
@@ -101,9 +100,6 @@ function App() {
                 setCards(cards)
             })
             .catch(err => `Данные не получены, ошибка: ${ err }`);
-    }, []);
-
-    React.useEffect(() => {
         api.getMyProfile()
             .then((userData) => {
                 setСurrentUser(userData);

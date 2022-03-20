@@ -23,21 +23,20 @@ function EditAvatarPopup(props) {
             onClose={ props.onClose }
             onSubmit={ handleSubmit }
             titleButton='Сохранить'
-            children={
-                <label className="form__field">
-                    <input
-                        className="form__input"
-                        id="avatar-link"
-                        type="url"
-                        name="avatar"
-                        placeholder="Ссылка на картинку"
-                        ref={avatarRef}
-                        required
-                    />
-                    <span className="form__input-error" id="avatar-link-error"></span>
-                </label>
-            }
-        />
+        >
+            <label className="form__field">
+                <input
+                    className="form__input"
+                    id="avatar-link"
+                    type="url"
+                    name="avatar"
+                    placeholder="Ссылка на картинку"
+                    ref={ avatarRef }
+                    required
+                />
+                <span className="form__input-error" id="avatar-link-error"></span>
+            </label>
+        </PopupWithForm>
     )
 }
 

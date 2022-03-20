@@ -7,9 +7,7 @@ function AddPlacePopup(props) {
 
     function handleAddPlaceSubmit(evt) {
         evt.preventDefault();
-        props.addPlace({name, link });
-        setName('');
-        setLink('');
+        props.addPlace({name, link});
         props.onClose();
     }
 
@@ -34,39 +32,38 @@ function AddPlacePopup(props) {
             onClose={ props.onClose }
             titleButton='Создать'
             onSubmit={ handleAddPlaceSubmit }
-            children={
-                <>
-                    <label className="form__field">
-                        <input
-                            className="form__input"
-                            id="place-name"
-                            type="text"
-                            name="place"
-                            placeholder="Название"
-                            minLength="2"
-                            maxLength="30"
-                            onChange={ handleNameChange }
-                            value={ name }
-                            required
-                        />
-                        <span className="form__input-error" id="place-name-error"></span>
-                    </label>
-                    <label className="form__field">
-                        <input
-                            className="form__input"
-                            id="place-link"
-                            type="url"
-                            name="link"
-                            placeholder="Ссылка на картинку"
-                            onChange={ handleLinkChange }
-                            value={ link }
-                            required
-                        />
-                        <span className="form__input-error" id="place-link-error"></span>
-                    </label>
-                </>
-            }
-        />
+        >
+            <>
+                <label className="form__field">
+                    <input
+                        className="form__input"
+                        id="place-name"
+                        type="text"
+                        name="place"
+                        placeholder="Название"
+                        minLength="2"
+                        maxLength="30"
+                        onChange={ handleNameChange }
+                        value={ name }
+                        required
+                    />
+                    <span className="form__input-error" id="place-name-error"></span>
+                </label>
+                <label className="form__field">
+                    <input
+                        className="form__input"
+                        id="place-link"
+                        type="url"
+                        name="link"
+                        placeholder="Ссылка на картинку"
+                        onChange={ handleLinkChange }
+                        value={ link }
+                        required
+                    />
+                    <span className="form__input-error" id="place-link-error"></span>
+                </label>
+            </>
+        </PopupWithForm>
     )
 }
 

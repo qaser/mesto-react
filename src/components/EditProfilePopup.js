@@ -33,7 +33,7 @@ function EditProfilePopup(props) {
             setName(currentUser.name);
             setOccupation(currentUser.about);
         }
-    }, [currentUser]);
+    }, [currentUser, props.isOpen]);
 
     return (
         <PopupWithForm
@@ -43,39 +43,36 @@ function EditProfilePopup(props) {
             name='edit-user'
             title='Редактировать профиль'
             titleButton='Сохранить'
-            children={
-                <>
-                    <label className="form__field">
-                        <input
-                            className="form__input"
-                            id="user-name"
-                            onChange={ handleNameChange }
-                            value={ name }
-                            type="text"
-                            name="name"
-                            placeholder="Имя пользователя"
-                            required minLength="2"
-                            maxLength="40"
-                        />
-                        <span className="form__input-error" id="user-name-error"></span>
-                    </label>
-                    <label className="form__field">
-                        <input
-                            className="form__input"
-                            id="user-occupation"
-                            onChange={ handleOccupationChange }
-                            value={ occupation }
-                            type="text"
-                            name="occupation"
-                            placeholder="О себе"
-                            required minLength="2"
-                            maxLength="200"
-                        />
-                        <span className="form__input-error" id="user-occupation-error"></span>
-                    </label>
-                </>
-            }
-        />
+        >
+            <label className="form__field">
+                <input
+                    className="form__input"
+                    id="user-name"
+                    onChange={ handleNameChange }
+                    value={ name }
+                    type="text"
+                    name="name"
+                    placeholder="Имя пользователя"
+                    required minLength="2"
+                    maxLength="40"
+                />
+                <span className="form__input-error" id="user-name-error"></span>
+            </label>
+            <label className="form__field">
+                <input
+                    className="form__input"
+                    id="user-occupation"
+                    onChange={ handleOccupationChange }
+                    value={ occupation }
+                    type="text"
+                    name="occupation"
+                    placeholder="О себе"
+                    required minLength="2"
+                    maxLength="200"
+                />
+                <span className="form__input-error" id="user-occupation-error"></span>
+            </label>
+        </PopupWithForm>
     )
 }
 
